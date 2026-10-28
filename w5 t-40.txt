@@ -1,0 +1,182 @@
+Skip to content
+varshi38
+APS-using-java
+Repository navigation
+Code
+Issues
+Pull requests
+Agents
+Actions
+Projects
+Security and quality
+Insights
+Commit 222f491
+varshi38
+varshi38
+authored
+34 minutes ago
+Verified
+Add files via upload
+main
+1 parent 
+9962523
+ commit 
+222f491
+5 files changed
+
++136
+Lines changed: 136 additions & 0 deletions
+File tree
+Filter files…
+w5 t-38.txt
+w5 t-39.txt
+w5 t-40.txt
+w5 t-41.txt
+w5 t37.txt
+Search within code
+ 
+‎w5 t-38.txt‎
++25
+Lines changed: 25 additions & 0 deletions
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,25 @@
+import java.util.ArrayList;
+import java.util.List;
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(1, n, k, new ArrayList<>(), result);
+        return result;
+    }
+    private void backtrack(int start, int n, int k,
+                           List<Integer> current,
+                           List<List<Integer>> result) {
+        if (current.size() == k) {
+            result.add(new ArrayList<>(current));
+            return;
+        }
+        for (int i = start; i <= n; i++) {
+            current.add(i);
+            backtrack(i + 1, n, k, current, result);
+            current.remove(current.size() - 1);
+        }
+    }
+}
+‎w5 t-39.txt‎
++24
+Lines changed: 24 additions & 0 deletions
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,24 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode current = root;
+        while (current != null || !stack.isEmpty()) {
+            while (current != null) {
+                stack.push(current);
+                current = current.left;
+            }
+            current = stack.pop();
+            result.add(current.val);
+            current = current.right;
+        }
+        return result;
+    }
+}
+‎w5 t-40.txt‎
++32
+Lines changed: 32 additions & 0 deletions
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,32 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            result.add(node.val);
+            // Push right first, then left
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
+        return result;
+    }
+}
+‎w5 t-41.txt‎
++30
+Lines changed: 30 additions & 0 deletions
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,30 @@
+mport java.util.*;
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            result.add(node.val);
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+        }
+        Collections.reverse(result);
+        return result;
+    }
+}
+‎w5 t37.txt‎
++25
+Lines changed: 25 additions & 0 deletions
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,25 @@
+import java.util.ArrayList;
+import java.util.List;
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(1, n, k, new ArrayList<>(), result);
+        return result;
+    }
+    private void backtrack(int start, int n, int k,
+                           List<Integer> current,
+                           List<List<Integer>> result) {
+        if (current.size() == k) {
+            result.add(new ArrayList<>(current));
+            return;
+        }
+        for (int i = start; i <= n; i++) {
+            current.add(i);
+            backtrack(i + 1, n, k, current, result);
+            current.remove(current.size() - 1);
+        }
+    }
+}
+0 commit comments
+Comments
+0
+ (0)
+Comment
+You're not receiving notifications from this thread.
+
+Copied! 
